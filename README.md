@@ -115,3 +115,23 @@ run the model itself.
 ```powershell
 python -m unittest discover -s tests
 ```
+
+## CI/CD and Docker Hub
+
+GitHub Actions runs unit tests and builds the Docker image for pushes to `main`,
+pull requests targeting `main`, and manual workflow runs. Successful pushes to
+`main` and manual runs publish the image to Docker Hub:
+
+```text
+tarungorani/loan-approval-checker:latest
+tarungorani/loan-approval-checker:sha-<commit>
+```
+
+Configure this repository secret before the first push or manual publish:
+
+- `DOCKERHUB_TOKEN`: a Docker Hub personal access token with read/write access
+
+Create the token in Docker Hub under **Account Settings → Personal access
+tokens**. In GitHub, add it under **Settings → Secrets and variables →
+Actions → New repository secret**. Pull requests build and test the image but
+do not push it to Docker Hub.

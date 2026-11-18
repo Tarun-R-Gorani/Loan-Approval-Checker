@@ -214,7 +214,7 @@ with form_column:
             format="%d%%",
             help="Enter the share of monthly income committed to debt.",
         )
-        submitted = st.form_submit_button("✨  Generate demo assessment")
+        submitted = st.form_submit_button("✨  Generate assessment")
 
 if submitted:
     payload = {
